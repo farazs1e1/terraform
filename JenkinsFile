@@ -1,0 +1,25 @@
+pipeline {
+agent any 
+tools{
+terraform 'terraform'
+}
+stages{
+
+	stage('git checkout'){
+		steps {
+			git credentialsId: '817773c9-4511-4de6-bc4c-518fbfa0a70c' ,url: 'https://github.com/farazs1e1/terraform'
+		}	
+	}
+	stage('terraform init'){
+		steps {
+			sh label: '' , script : 'terraform init'
+		}	
+	}
+	stage('terraform apply'){
+		steps {
+			sh label: '' , script : 'terraform apply'
+		}	
+	}
+
+}
+}
